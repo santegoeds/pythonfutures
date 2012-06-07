@@ -475,10 +475,10 @@ class Future(object):
                 self._state = RUNNING
                 return True
             else:
-                LOGGER.critical('Future %s in unexpected state: %s',
-                                id(self.future),
-                                self.future._state)
-                raise RuntimeError('Future in unexpected state')
+                msg = 'Future %s in unexpected state: %s' % (id(self),
+                      self._state)
+                LOGGER.critical(msg)
+                raise RuntimeError(msg)
 
     def set_result(self, result):
         """Sets the return value of work associated with the future.
